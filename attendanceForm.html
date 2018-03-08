@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance</title>
+    <link rel="stylesheet" type="text/css" href="attendanceFormCSS.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+   <h1><img src="FinalSheekMediaLogo.png" alt="Sheek Media Logo" id="mainLogo"></h1>
+   <form class="inputBox" id="gform" method="post" >
+     <h2>Report Absence</h2>
+      <div>
+       <input type="text" placeholder="First Name" id="firstName" name="firstName" required> <br>
+       <input type="text" placeholder="Last Name" id="lastName" name="lastName" required> <br>
+       <input type="email" placeholder="Email" id="email" name="email" required> <br>
+       <input type="date" placeholder="Date" id="date" name="date" required> <br>
+       <input type="text" placeholder="Reason" id="reason" name="reason"> <br>
+       <button type="submit" id="submit">Submit</button>
+      </div>  
+    </form>
+    
+<script>
+    $(document).ready(function(){
+        
+   
+    $('#submit').on('click',function(){
+        var params = $("#gform").serialize();
+        console.log(params); 
+        var url = "https://docs.google.com/spreadsheets/d/14DuLy8-zgHBaXkHl-MSrrHbK72lix6HF_RzOC9oBu_I/edit?usp=sharing";
+        $.post(url, params, function(response){
+        console.log(response);
+    });
+    });
+    }); 
+//    var $form = $('form#test-form'),
+//    url = 'https://script.google.com/macros/s/AKfycbzGtuBrVTONMpzMvW13c4HiQnkDrikNX1_lcnrEGJ4PFoaNkiWA/exec'
+//
+//$('#submit-form').on('click', function(e) {
+//  e.preventDefault();
+//  var jqxhr = $.ajax({
+//    url: url,
+//    method: "GET",
+//    dataType: "json",
+//    data: $form.serializeObject()
+//  }).success(
+//    // do something
+//  );
+//})
+</script>
+</body>
+</html>
